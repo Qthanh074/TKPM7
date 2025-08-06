@@ -13,6 +13,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Qthanh074/TKPM7.git'
             }
         }
+        stage('Check files') {
+    steps {
+        bat 'dir'
+    }
+}
 
         stage('Restore packages') {
             steps {
