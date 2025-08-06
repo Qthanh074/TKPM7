@@ -1,14 +1,5 @@
-environment {
-  MSBUILD = '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"'
-  NUGET   = '"C:\\Tools\\nuget\\nuget.exe"'
-}
-
 pipeline {
   agent any
-  environment {
-    MSBUILD = "${MSBUILD}"
-    NUGET   = "${NUGET}"
-  }
   stages {
     stage('Clone') {
       steps {
@@ -17,12 +8,12 @@ pipeline {
     }
     stage('Restore packages') {
       steps {
-        bat "${env.NUGET} restore SNKRS.sln"
+        bat 'nuget restore SNKRS.sln'
       }
     }
     stage('Build') {
       steps {
-        bat "${env.MSBUILD} SNKRS.csproj /p:Configuration=Release"
+        bat 'msbuild SNKRS.csproj /p:Configuration=Release'
       }
     }
   }
