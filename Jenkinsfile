@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Check files') {
     steps {
-        bat 'dir'
+        bat 'bat 'dir /s SNKRS.csproj''
     }
 }
 
