@@ -15,5 +15,12 @@ pipeline {
                 bat 'dotnet restore'
             }
         }
+
+        stage('Build') {
+            steps {
+                echo 'Build project .NET Core'
+                bat 'dotnet build --configuration Release'
+            }
+        }
     }
 }
